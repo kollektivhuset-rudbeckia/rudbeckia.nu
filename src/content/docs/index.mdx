@@ -12,6 +12,10 @@ hero:
       link: /oppet-hus/
       icon: right-arrow
       variant: primary
+    - text: Bli vänmedlem
+      link: https://members.rudbeckia.nu/bli-medlem
+      icon: heart
+      variant: secondary
     - text: Är du nyfiken på att bo här?
       link: /foreningen/formedlingspolicy/
       icon: right-arrow
@@ -22,11 +26,19 @@ hero:
       variant: secondary
 ---
 
-import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkButton, LinkCard } from '@astrojs/starlight/components';
 
 ## Välkommen!
 
 I november 2021 blev kollektivhuset Rudbeckia i stadsdelen [Rosendal](./rosendal/) i Uppsala inflyttningsklart. Huset har 42 lägenheter och över 300 kvadratmeter gemensamma ytor. Boendeformen utvecklas för att den ska bli precis så fantastisk som vi önskar. Varje dag ger nya möjligheter att lära känna varandra.
+
+:::tip[Bli vänmedlem – du behöver inte bo här]
+Som vänmedlem får du delta i husets matlag och aktiviteter, och du samlar köpoäng i föreningens interna bostadskö. Läs mer om [medlemskap](./foreningen/medlemskap/).
+
+<LinkButton href="https://members.rudbeckia.nu/bli-medlem" variant="primary" icon="right-arrow">
+	Bli vänmedlem
+</LinkButton>
+:::
 
 :::tip[Nyfiken på att bo i kollektivhuset?]
 - [kontakta Rudbeckias förmedlingsgrupp direkt](mailto:ny@rudbeckia.nu) så att vi vet att du är intresserad! 

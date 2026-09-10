@@ -11,6 +11,7 @@ export default defineConfig({
 		starlight({
 			plugins: [starlightThemeFlexoki({ accentColor: 'yellow' })],
 			components: {
+				Header: './src/components/Header.astro',
 				Hero: './src/components/Hero.astro',
 				LanguageSelect: './src/components/LanguageSelect.astro',
 			},

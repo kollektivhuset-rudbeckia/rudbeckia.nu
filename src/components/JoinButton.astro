@@ -1,0 +1,56 @@
+---
+/**
+ * Call to action linking to the membership sign-up form. Rendered in the site
+ * header on every page so that joining the association is never more than one
+ * click away.
+ */
+import { Icon } from '@astrojs/starlight/components';
+
+const { lang } = Astro.locals.starlightRoute;
+const isSwedish = lang.startsWith('sv');
+---
+
+<a class="join" href="https://members.rudbeckia.nu/bli-medlem">
+	<Icon name="heart" size="1em" />
+	<span>{isSwedish ? 'Bli medlem' : 'Become a member'}</span>
+</a>
+
+<style>
+	@layer starlight.components {
+		.join {
+			display: flex;
+			align-items: center;
+			gap: 0.375rem;
+			padding: 0.375rem 0.75rem;
+			border: 1px solid var(--sl-color-text-accent);
+			border-radius: 999rem;
+			background: var(--sl-color-text-accent);
+			color: var(--sl-color-black);
+			font-size: var(--sl-text-xs);
+			font-weight: 600;
+			line-height: 1.2;
+			white-space: nowrap;
+			text-decoration: none;
+			transition: opacity 0.15s ease;
+		}
+
+		.join:hover,
+		.join:focus-visible {
+			color: var(--sl-color-black);
+			opacity: 0.85;
+		}
+
+		@media (min-width: 50rem) {
+			.join {
+				padding: 0.4375rem 0.9375rem;
+				font-size: var(--sl-text-sm);
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.join {
+				transition: none;
+			}
+		}
+	}
+</style>
