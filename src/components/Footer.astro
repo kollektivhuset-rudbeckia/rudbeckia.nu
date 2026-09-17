@@ -1,9 +1,10 @@
 ---
 /**
- * Copy of Starlight's `Footer` with the association's Swish and bankgiro
- * numbers added below the pagination. They are the same ones the membership
- * site hands out at members.rudbeckia.nu/bli-medlem, repeated here so that a
- * member who wants to pay the yearly fee does not have to go looking.
+ * Copy of Starlight's `Footer` with the association's organisation number and
+ * its Swish and bankgiro numbers added below the pagination. The two payment
+ * numbers are the ones the membership site hands out at
+ * members.rudbeckia.nu/bli-medlem, repeated here so that a member who wants to
+ * pay the yearly fee does not have to go looking.
  *
  * The landing page uses the splash template and is left alone: it is a front
  * door, not a page anyone reads to find a bankgiro number.
@@ -20,10 +21,12 @@ const isSplash = entry.data.template === 'splash';
 
 const swish = '123-133 37 07';
 const bankgiro = '5752-5925';
+const orgNumber = '802535-6844';
 
 const heading = isSwedish
 	? 'Föreningen Kollektivhuset Rudbeckia'
 	: 'Kollektivhuset Rudbeckia (the association)';
+const orgLabel = isSwedish ? 'Org.nr' : 'Org. no.';
 ---
 
 <footer class="sl-flex">
@@ -38,6 +41,10 @@ const heading = isSwedish
 			<div class="payment">
 				<p class="payment-heading">{heading}</p>
 				<dl class="payment-details">
+					<div>
+						<dt>{orgLabel}</dt>
+						<dd>{orgNumber}</dd>
+					</div>
 					<div>
 						<dt>Swish</dt>
 						<dd>{swish}</dd>
