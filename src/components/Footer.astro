@@ -1,8 +1,8 @@
 ---
 /**
- * Copy of Starlight's `Footer` with the association's payment details added
- * below the pagination. The numbers are the same ones the membership site
- * hands out at members.rudbeckia.nu/bli-medlem, repeated here so that a
+ * Copy of Starlight's `Footer` with the association's Swish and bankgiro
+ * numbers added below the pagination. They are the same ones the membership
+ * site hands out at members.rudbeckia.nu/bli-medlem, repeated here so that a
  * member who wants to pay the yearly fee does not have to go looking.
  *
  * The landing page uses the splash template and is left alone: it is a front
@@ -21,19 +21,9 @@ const isSplash = entry.data.template === 'splash';
 const swish = '123-133 37 07';
 const bankgiro = '5752-5925';
 
-const t = isSwedish
-	? {
-			heading: 'Föreningen Kollektivhuset Rudbeckia',
-			intro: 'Medlemsavgiften betalas till:',
-			swish: 'Swish',
-			bankgiro: 'Bankgiro',
-		}
-	: {
-			heading: 'Kollektivhuset Rudbeckia (the association)',
-			intro: 'The membership fee is paid to:',
-			swish: 'Swish',
-			bankgiro: 'Bankgiro',
-		};
+const heading = isSwedish
+	? 'Föreningen Kollektivhuset Rudbeckia'
+	: 'Kollektivhuset Rudbeckia (the association)';
 ---
 
 <footer class="sl-flex">
@@ -46,15 +36,14 @@ const t = isSwedish
 	{
 		!isSplash && (
 			<div class="payment">
-				<p class="payment-heading">{t.heading}</p>
-				<p class="payment-intro">{t.intro}</p>
+				<p class="payment-heading">{heading}</p>
 				<dl class="payment-details">
 					<div>
-						<dt>{t.swish}</dt>
+						<dt>Swish</dt>
 						<dd>{swish}</dd>
 					</div>
 					<div>
-						<dt>{t.bankgiro}</dt>
+						<dt>Bankgiro</dt>
 						<dd>{bankgiro}</dd>
 					</div>
 				</dl>
@@ -100,9 +89,6 @@ const t = isSwedish
 			margin: 0;
 			font-weight: 600;
 			color: var(--sl-color-white);
-		}
-		.payment-intro {
-			margin: 0.25rem 0 0;
 		}
 		.payment-details {
 			display: flex;
