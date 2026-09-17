@@ -1,0 +1,144 @@
+---
+/**
+ * Copy of Starlight's `Footer` with the association's payment details added
+ * below the pagination. The numbers are the same ones the membership site
+ * hands out at members.rudbeckia.nu/bli-medlem, repeated here so that a
+ * member who wants to pay the yearly fee does not have to go looking.
+ *
+ * The landing page uses the splash template and is left alone: it is a front
+ * door, not a page anyone reads to find a bankgiro number.
+ */
+import EditLink from 'virtual:starlight/components/EditLink';
+import LastUpdated from 'virtual:starlight/components/LastUpdated';
+import Pagination from 'virtual:starlight/components/Pagination';
+import config from 'virtual:starlight/user-config';
+import { Icon } from '@astrojs/starlight/components';
+
+const { entry, lang } = Astro.locals.starlightRoute;
+const isSwedish = lang.startsWith('sv');
+const isSplash = entry.data.template === 'splash';
+
+const swish = '123-133 37 07';
+const bankgiro = '5752-5925';
+
+const t = isSwedish
+	? {
+			heading: 'Föreningen Kollektivhuset Rudbeckia',
+			intro: 'Medlemsavgiften betalas till:',
+			swish: 'Swish',
+			bankgiro: 'Bankgiro',
+		}
+	: {
+			heading: 'Kollektivhuset Rudbeckia (the association)',
+			intro: 'The membership fee is paid to:',
+			swish: 'Swish',
+			bankgiro: 'Bankgiro',
+		};
+---
+
+<footer class="sl-flex">
+	<div class="meta sl-flex">
+		<EditLink />
+		<LastUpdated />
+	</div>
+	<Pagination />
+
+	{
+		!isSplash && (
+			<div class="payment">
+				<p class="payment-heading">{t.heading}</p>
+				<p class="payment-intro">{t.intro}</p>
+				<dl class="payment-details">
+					<div>
+						<dt>{t.swish}</dt>
+						<dd>{swish}</dd>
+					</div>
+					<div>
+						<dt>{t.bankgiro}</dt>
+						<dd>{bankgiro}</dd>
+					</div>
+				</dl>
+			</div>
+		)
+	}
+
+	{
+		config.credits && (
+			<a class="kudos sl-flex" href="https://starlight.astro.build">
+				<Icon name={'starlight'} /> {Astro.locals.t('builtWithStarlight.label')}
+			</a>
+		)
+	}
+</footer>
+
+<style>
+	@layer starlight.core {
+		footer {
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+		.meta {
+			gap: 0.75rem 3rem;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			margin-top: 3rem;
+			font-size: var(--sl-text-sm);
+			color: var(--sl-color-gray-3);
+		}
+		.meta > :global(p:only-child) {
+			margin-inline-start: auto;
+		}
+
+		.payment {
+			margin-top: 1.5rem;
+			padding-top: 1.5rem;
+			border-top: 1px solid var(--sl-color-gray-5);
+			font-size: var(--sl-text-sm);
+			color: var(--sl-color-gray-3);
+		}
+		.payment-heading {
+			margin: 0;
+			font-weight: 600;
+			color: var(--sl-color-white);
+		}
+		.payment-intro {
+			margin: 0.25rem 0 0;
+		}
+		.payment-details {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.25rem 2rem;
+			margin: 0.5rem 0 0;
+		}
+		.payment-details div {
+			display: flex;
+			gap: 0.5rem;
+		}
+		.payment-details dt {
+			font-weight: 600;
+		}
+		.payment-details dd {
+			margin: 0;
+			font-variant-numeric: tabular-nums;
+			white-space: nowrap;
+		}
+
+		.kudos {
+			align-items: center;
+			gap: 0.5em;
+			margin: 1.5rem auto;
+			font-size: var(--sl-text-xs);
+			text-decoration: none;
+			color: var(--sl-color-gray-3);
+		}
+		.kudos:hover {
+			color: var(--sl-color-white);
+		}
+	}
+
+	@layer starlight.components {
+		.kudos :global(svg) {
+			color: var(--sl-color-orange);
+		}
+	}
+</style>
