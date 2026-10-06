@@ -66,7 +66,6 @@ export default defineConfig({
 					],
 				},
 				{ label: 'Hem', translations: { en: 'Home' }, link: '/' },
-				{ label: 'Öppet hus', translations: { en: 'Open house' }, link: '/oppet-hus/' },
 				{ label: 'Nyinflyttad', translations: { en: 'Just moved in' }, link: '/nyinflyttad/' },
 				{
 					label: 'Föreningen',
