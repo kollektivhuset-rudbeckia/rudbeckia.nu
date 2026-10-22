@@ -1,8 +1,11 @@
 ---
 /**
- * Call to action linking to the membership sign-up form. Rendered in the site
- * header on every page so that joining the association is never more than one
- * click away.
+ * Call to action linking to the interest form. Rendered in the site header on
+ * every page so that getting in touch is never more than one click away.
+ *
+ * It asks whether you are curious rather than telling you to join: most people
+ * want to hear about a dinner or a game night first, and you can take part in
+ * those without being a member. Becoming one is a choice on the form itself.
  */
 import { Icon } from '@astrojs/starlight/components';
 
@@ -12,7 +15,7 @@ const isSwedish = lang.startsWith('sv');
 
 <a class="join" href="https://members.rudbeckia.nu/bli-medlem">
 	<Icon name="heart" size="1em" />
-	<span>{isSwedish ? 'Bli medlem' : 'Become a member'}</span>
+	<span>{isSwedish ? 'Nyfiken på oss?' : 'Curious about us?'}</span>
 </a>
 
 <style>
